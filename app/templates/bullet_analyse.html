@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>视频弹幕分析</h1>
+    <h1>正在分析的视频是：<a href="{{ url }}" target="_blank">{{ video_title }}</a></h1>
+    <hr>
+    <h2>弹幕词语分析</h2>
+    <img src={{ bullet_words_img_url }} alt="弹幕词云">
+    <p>(弹幕词云)</p>
+    {% if word_counts_top10 %}
+        <h1>弹幕中出现频率最高的10个词语如下：</h1>
+        {% for word in word_counts_top10 %}
+            <sapn>{{ word }}</sapn>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <h2>弹幕句子分析</h2>
+    <img src={{ bullets_img_url }} alt="弹幕句云">
+    <p>(弹幕句云)</p>
+    {% if bullet_counts_top10 %}
+        <h1>弹幕中出现频率最高的10条如下：</h1>
+        {% for word in bullet_counts_top10 %}
+            <sapn>{{ word }}</sapn>
+        {% endfor %}
+    {% endif %}
+    <h2><a href="{{ url_for('comment_analyse',bv=bv) }}">继续分析此视频的评论</a></h2>
+    <h2><a href="{{ url_for('index') }}">返回首页</a></h2>
+{% endblock %}

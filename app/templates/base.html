@@ -1,0 +1,26 @@
+<html>
+<head>
+    {% if title %}
+        <title>{{ title }}-B站新鲜事</title>
+    {% else %}
+        <title>B站新鲜事</title>
+    {% endif %}
+
+</head>
+<body>
+    <span><a href="{{ url_for('index') }}">【首页·B站新鲜事儿】</a></span>
+    <span><a href="{{ url_for('get_bv_for_bullet') }}">【输入链接进行弹幕和评论分析】</a></span>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <hr>
+    {% block content%}
+
+    {% endblock %}
+
+</body>
+</html>

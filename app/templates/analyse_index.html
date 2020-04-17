@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>正在分析的视频链接是：<a href="{{ url }}" target="_blank">{{ url }}</a></h1>
+    <h2>标题：{{ video_info['data']['title'] }}</h2>
+    <span>【播放量】:{{ video_info['data']['stat']['view'] }}</span>
+    <span>【收藏量】:{{ video_info['data']['stat']['favorite'] }}</span>
+    <span>【点赞量】:{{ video_info['data']['stat']['like'] }}</span>
+    <span>【评论量】:{{ video_info['data']['stat']['reply'] }}</span>
+    <span>【投币量】:{{ video_info['data']['stat']['coin'] }}</span>
+    <h2><a href="{{ url_for('bullet_analyse',bv=bv) }}">分析此视频的弹幕</a></h2>
+    <h2><a href="{{ url_for('comment_analyse',bv=bv) }}">分析此视频的评论</a></h2>
+{% endblock %}

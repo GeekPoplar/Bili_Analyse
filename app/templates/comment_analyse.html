@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>视频评论分析</h1>
+    (注：由于网络请求速度限制，本站暂时无法做到爬取全部评论进行分析，此处取前100条作为样本，后期再进行进一步优化！)
+    <h1>正在分析的视频是：<a href="{{ url }}" target="_blank">{{ video_title }}</a></h1>
+    <hr>
+    <h2>评论词语分析</h2>
+    <img src={{ comment_words_img_url }} alt="评论词云">
+    <p>(评论词云)</p>
+    {% if word_counts_top10 %}
+        <h1>评论中出现频率最高的10个词语如下：</h1>
+        {% for word in word_counts_top10 %}
+            <sapn>{{ word }}</sapn>
+        {% endfor %}
+    {% endif %}
+    <h2><a href="{{ url_for('bullet_analyse',bv=bv) }}">继续分析此视频的弹幕</a></h2>
+    <h2><a href="{{ url_for('index') }}">返回首页</a></h2>
+{% endblock %}

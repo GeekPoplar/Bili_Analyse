@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <hr>
+    {% if videos %}
+        <h1>以下为B站当前排行榜前20的视频，点击对其弹幕和评论进行分析</h1>
+        {% for video in videos %}
+            <span>【{{ videos.index(video)+1 }}】</span>
+            <a href="{{ url_for('analyse_index',bv=video['url'].split('/')[-1]) }}" target="_blank">{{ video['title'] }}</a>
+            <br>
+        {% endfor %}
+        <h2><a href="ranking">点击查看完整排行榜</a></h2>
+    {% endif %}
+    <hr>
+    <span>【作者】：魏敬杨</span>
+    <span>【班级】：大数据18级2班</span>
+    <span>【学号】：08183059</span>
+{% endblock %}
